@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengxuegu.springboot.mapper.ProviderMapper">
+
+    <!--<select id="getProviders" parameterType="java.lang.String" resultType="com.mengxuegu.springboot.entities.Provider">-->
+        <!--select * from provider where 1=1-->
+        <!--<if test="_parameter!=null || _parameter!=''">-->
+            <!--and providerName = #{providerName}-->
+        <!--</if>-->
+<!--</select>-->
+    <select id="getProviders" parameterType="Provider" resultType="Provider">
+        select * from provider where 1=1
+        <if test="providerName!=null || providerName!=''">
+            and providerName like '%${providerName}%'
+        </if>
+    </select>
+
+    <select id="getProviderByPid" resultType="Provider">
+        SELECT  * from provider where pid = #{pid}
+    </select>
+    <insert id="addProvider" parameterType="Provider"  >
+        insert into provider(provider_code,providerName,people,phone,address,fax,describes,create_date)
+         values(#{providerCode},#{providerName},#{people},#{phone},#{address},#{fax},#{describes},now())
+    </insert>
+    <update id="UpdateProvider" parameterType="Provider">
+        update provider set provider_code=#{providerCode},providerName=#{providerName},people=#{people},phone=#{phone},address=#{address},fax=#{fax},describes=#{describes},create_date=now()
+        where pid=#{pid}
+    </update>
+    <delete id="deleteProviderByPid" >
+        delete from provider where pid = #{pid}
+    </delete>
+
+
+
+
+
+</mapper>
