@@ -14,7 +14,7 @@ pipeline {
       }
       stage('deploy code') {
          steps {
-             sh label: '', script: '''cd  /var/lib/jenkins/workspace/test02/target
+             sh label: '', script: '''cd  /var/lib/jenkins/workspace/test03/target
                 java -jar ./*.jar'''
          }
       }
