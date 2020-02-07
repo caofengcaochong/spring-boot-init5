@@ -19,4 +19,9 @@ pipeline {
          }
       }
    }
+   post {
+     always {
+       emailext body: '成功了', subject: 'Jenkins', to: '55186857@qq.com'
+     }
+   }
 }
