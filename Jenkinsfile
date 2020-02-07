@@ -12,12 +12,7 @@ pipeline {
              sh label: '', script: 'mvn clean package'
          }
       }
-      stage('deploy code') {
-         steps {
-             sh label: '', script: '''cd  /var/lib/jenkins/workspace/test03/target
-                java -jar ./*.jar'''
-         }
-      }
+
    }
    post {
      always {
