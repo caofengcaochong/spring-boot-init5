@@ -28,6 +28,7 @@ public class BillController {
     @GetMapping("/bills")
     public String list(Map<String,Object> map,Bill bill){
         logger.info("provider has searched:"+bill.getBillName());
+        System.out.println("nihao");
 //        Collection<Provider> providers = providerDao.getAll(providerName);
 //        List<Provider> providers = providerMapper.getProviders(provider);
         List<BillProvider> billProviders = billMapper.getBills(bill);
