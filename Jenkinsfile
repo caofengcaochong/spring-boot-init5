@@ -7,14 +7,13 @@ pipeline {
            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:caofengcaochong/spring-boot-init5.git']]])
          }
       }
-      s
       stage('build code') {
          steps {
              sh label: '', script: 'mvn clean package'
          }
       }
 
-      tage('check code') {
+      stage('check code') {
                      steps {
                          script{
                               scannerHome=tool 'sonar-scanner'
