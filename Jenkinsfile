@@ -1,5 +1,4 @@
-def docker_url "192.168.77.139:88"
-def ID "cf1c7203-7e9c-4630-be09-8c2aa42d3e39"
+
 pipeline {
    agent any
 
@@ -24,8 +23,8 @@ pipeline {
          steps {
              sh label: '', script: 'mvn clean package dockerfile:build'
              sh "docker tag spring-boot-init5:latest 192.168.77.139:88/test001/springboot:v2"
-withCredentials([usernamePassword(credentialsId: '${ID}', passwordVariable: 'password', usernameVariable: 'username')]) {
-        docker login -u ${usename} -p ${password} ${docker_url}
+withCredentials([usernamePassword(credentialsId: 'cf1c7203-7e9c-4630-be09-8c2aa42d3e39', passwordVariable: 'password', usernameVariable: 'username')]) {
+        docker login -u ${usename} -p ${password} 192.168.77.139:88
         docker push 192.168.77.139:88/test001/springboot:v2
 }
          }
