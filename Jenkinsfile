@@ -21,6 +21,7 @@ pipeline {
       stage('build code') {
          steps {
              sh label: '', script: 'mvn clean package dockerfile:build'
+             sh "docker tag spring-boot-init5:latest 192.168.77.139:88/test001/springboot:v2"
          }
       }
 
